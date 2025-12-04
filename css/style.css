@@ -381,21 +381,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     max-width: 400px;
     margin: 0 auto;
     position: relative;
+    padding: 15px;
 }
 
 .hero-image::before {
     content: '{ } < /> [ ] ( ) => function() { return "code"; } while(true) { learn(); } if(success) { celebrate(); }';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary-dark));
     border-radius: 15px;
-    z-index: -1;
+    z-index: 0;
     font-family: 'Courier New', monospace;
     font-size: 8px;
     color: rgba(255, 255, 255, 0.1);
@@ -409,10 +411,10 @@ body {
 .hero-image::after {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
     background: linear-gradient(45deg, 
         transparent 25%, 
         rgba(37, 211, 102, 0.1) 25%, 
@@ -421,14 +423,14 @@ body {
         transparent 75%, 
         rgba(0, 136, 204, 0.1) 75%);
     background-size: 20px 20px;
-    border-radius: 15px;
-    z-index: -1;
+    border-radius: 12px;
+    z-index: 0;
     animation: matrixMove 3s linear infinite;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 350px;
+    max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: var(--shadow-lg);
@@ -436,11 +438,12 @@ body {
     border: 2px solid rgba(37, 211, 102, 0.5);
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 .hero-image img:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(37, 211, 102, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.3);
     border-color: var(--primary);
 }
 
@@ -1162,11 +1165,12 @@ body {
     }
     
     .hero-image {
-        max-width: 320px;
+        max-width: 100%;
+        padding: 12px;
     }
     
-    .hero-image img {
-        max-width: 300px;
+    .hero-image::before {
+        font-size: 6px;
     }
     
 
@@ -1315,11 +1319,16 @@ body {
     }
     
     .hero-image {
-        max-width: 280px;
+        max-width: 100%;
+        padding: 10px;
     }
     
-    .hero-image img {
-        max-width: 260px;
+    .hero-image::before {
+        font-size: 5px;
+    }
+    
+    .hero-image::after {
+        background-size: 15px 15px;
     }
     
 
@@ -1579,11 +1588,20 @@ body {
     }
     
     .hero-image {
-        max-width: 250px;
+        max-width: 100%;
+        padding: 8px;
     }
     
-    .hero-image img {
-        max-width: 230px;
+    .hero-image::before {
+        font-size: 4px;
+    }
+    
+    .hero-image::after {
+        background-size: 12px 12px;
+    }
+    
+    .hero-image img:hover {
+        transform: none;
     }
     
 
