@@ -1,4 +1,4 @@
-/* RESET TOTAL */
+
 * {
     margin: 0;
     padding: 0;
@@ -537,7 +537,7 @@ body {
 
 .pricing-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius);
+    border-radiuvar(--radius);
     padding: 25px;
     text-align: center;
     border: 2px solid rgba(255, 255, 255, 0.1);
