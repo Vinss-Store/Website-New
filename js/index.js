@@ -52,6 +52,7 @@ if (navToggle && navMenu) {
 }
 
 // Pricing Data
+// Pricing Data - tambahkan 2 produk baru
 const pricingData = {
     basic: {
         title: "SC BOT TELE JASHARE",
@@ -87,6 +88,34 @@ const pricingData = {
             "Downloader Video Sosmes (tiktok, ig dll)",
             "Membuat Sticker",
             "Menggunakan Fitur Tools"
+        ]
+    },
+    // PRODUK BARU 1
+    infochannel: {
+        title: "Sc Bot Telegram Gacha",
+        image: "image/gacha.png",
+        description: "Bot Telegram Untuk Mendapatkan Sebuah Item Melalui Fitur Gacha Hadianya Random Bisa Zip Dan File Lainya",
+        features: [
+            "Gacha Item",
+            "Menggunakan Limit Untuk Gacha",
+            "Gacha Otomatis 10x",
+            "Gacha Premium Item Legend",
+            "Setiap Pengguna Gacha Harus Join Ch",
+            "Run di Panel dan Termux"
+        ]
+    },
+    // PRODUK BARU 2
+    admingroup: {
+        title: "Sc Bot Telegram MD",
+        image: "image/telemd.png",
+        description: "Bot Telegram Multi Device Ini Mempunyai Banyak Fitur Dapat Membantu Menjaga Group Otomatis",
+        features: [
+            "Auto Hapus Pesan Promosi / Penjualan",
+            "Auto Hapus Pesan Yang Berisi Link Group Dan Ch",
+            "Membuat Gambar Iphone Quick Chat",
+            "Download Video Sosmed",
+            "Game Menu",
+            "Islamic Menu"
         ]
     }
 };
