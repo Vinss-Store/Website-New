@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -537,12 +536,16 @@ body {
 
 .pricing-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radiuvar(--radius);
+    border-radius: var(--radius);
     padding: 25px;
     text-align: center;
     border: 2px solid rgba(255, 255, 255, 0.1);
     transition: var(--transition);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
 }
 
 .pricing-card:hover {
@@ -551,26 +554,20 @@ body {
     box-shadow: var(--shadow);
 }
 
-.pricing-card.featured {
-    border-color: var(--primary);
-    background: rgba(37, 211, 102, 0.05);
+/* SEMUA PRODUK SAMA - TIDAK ADA FEATURED */
+.pricing-card {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
+/* HAPUS POPULAR BADGE */
 .popular-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: var(--white);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    display: none;
 }
 
 .card-header {
     margin-bottom: 20px;
+    min-height: 90px;
 }
 
 .card-header h3 {
@@ -605,6 +602,7 @@ body {
     list-style: none;
     margin: 20px 0;
     text-align: left;
+    flex-grow: 1;
 }
 
 .features-list li {
@@ -623,6 +621,7 @@ body {
 
 .pricing-card .btn {
     margin-top: 20px;
+    min-height: 45px;
 }
 
 /* MODAL */
@@ -900,24 +899,52 @@ body {
         gap: 20px;
     }
     
-    /* PRICING DESKTOP */
+    /* PRICING DESKTOP - UPDATE UNTUK 5 PRODUK */
     .pricing-grid {
-        flex-direction: row;
-        max-width: none;
-        gap: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
     
+    /* Layout untuk 5 produk: 3 di baris pertama, 2 di baris kedua */
+    .pricing-card:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .pricing-card:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .pricing-card:nth-child(3) {
+        grid-column: 3;
+        grid-row: 1;
+    }
+    
+    .pricing-card:nth-child(4) {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: end;
+        margin-right: 10px;
+    }
+    
+    .pricing-card:nth-child(5) {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start;
+        margin-left: 10px;
+    }
+    
+    /* SEMUA CARD SAMA - TIDAK ADA SCALE */
     .pricing-card {
-        flex: 1;
-        min-width: 0;
+        transform: none;
     }
     
-    .pricing-card.featured {
-        transform: scale(1.05);
-    }
-    
-    .pricing-card.featured:hover {
-        transform: scale(1.05) translateY(-5px);
+    .pricing-card:hover {
+        transform: translateY(-5px);
     }
     
     /* MODAL DESKTOP */
@@ -961,6 +988,48 @@ body {
         align-items: center;
         text-align: left;
     }
+    
+    /* PRICING TABLET - 2 KOLOM */
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        gap: 25px;
+    }
+    
+    /* TIDAK ADA CARD FEATURED YANG SPAN 2 KOLOM */
+}
+
+/* ========== LARGE DESKTOP (1200px ke atas) - 5 PRODUK DALAM 1 BARIS ========== */
+@media (min-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+    
+    /* Reset semua posisi grid item untuk 5 kolom */
+    .pricing-card:nth-child(1),
+    .pricing-card:nth-child(2),
+    .pricing-card:nth-child(3),
+    .pricing-card:nth-child(4),
+    .pricing-card:nth-child(5) {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: center;
+        margin: 0;
+    }
+    
+    /* Perbaiki ukuran card untuk 5 kolom */
+    .pricing-card {
+        min-height: 450px;
+    }
+    
+    .card-header {
+        min-height: 100px;
+    }
+    
+    /* TIDAK ADA SCALE UNTUK FEATURED CARD */
 }
 
 /* ========== MOBILE OPTIMIZATIONS ========== */
@@ -1038,6 +1107,22 @@ body {
     .modal-content {
         margin: 10px;
     }
+    
+    .pricing-grid {
+        gap: 20px;
+    }
+    
+    .pricing-card {
+        padding: 15px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .price {
+        font-size: 1.8rem;
+    }
 }
 
 /* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
@@ -1070,9 +1155,35 @@ body {
     }
 }
 
+/* ========== TABLET LANDSCAPE OPTIMIZATION ========== */
+@media (max-width: 767px) and (orientation: landscape) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+}
+
 /* ========== IOS SAFARI FIX ========== */
 @supports (-webkit-touch-callout: none) {
     .hero {
         min-height: -webkit-fill-available;
+    }
+}
+
+/* ========== OPTIMASI TAMPILAN PRODUK ========== */
+.pricing-card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Perbaikan untuk modal pada layar kecil */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 10px;
+        max-height: 85vh;
+    }
+    
+    .modal-plan-image {
+        width: 80px;
+        height: 80px;
     }
 }
