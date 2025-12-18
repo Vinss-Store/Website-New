@@ -1,6 +1,107 @@
 // Mobile Navigation (jika ada)
 document.addEventListener('DOMContentLoaded', function() {
-    // Tab Switching Functionality
+    console.log('DOM Content Loaded - Starting initialization');
+    
+    // ==================== BACKGROUND MUSIC AUTOPLAY ====================
+    
+    function initBackgroundMusic() {
+        console.log('Initializing background music...');
+        
+        const audio = document.getElementById('backgroundMusic');
+        
+        if (!audio) {
+            console.error('❌ Background music element not found!');
+            return;
+        }
+        
+        console.log('✅ Audio element found');
+        
+        // Set volume rendah (30%)
+        audio.volume = 0.3;
+        
+        // Cek jika audio sudah bisa diputar
+        audio.addEventListener('canplay', () => {
+            console.log('✅ Audio can be played now');
+            
+            // Strategy 1: Coba play langsung
+            const playAudio = () => {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('🎵 Background music started successfully');
+                        localStorage.setItem('music_autoplay', 'true');
+                    }).catch(error => {
+                        console.log('❌ Autoplay blocked:', error.name);
+                        
+                        // Strategy 2: Coba setelah sedikit delay
+                        setTimeout(() => {
+                            audio.play().then(() => {
+                                console.log('✅ Music started after timeout');
+                            }).catch(e => {
+                                console.log('❌ Still blocked, waiting for user interaction');
+                            });
+                        }, 1000);
+                    });
+                }
+            };
+            
+            // Coba play setelah semua resource loaded
+            if (document.readyState === 'complete') {
+                playAudio();
+            } else {
+                window.addEventListener('load', playAudio);
+            }
+        });
+        
+        // Tambahkan error handler
+        audio.addEventListener('error', (e) => {
+            console.error('Audio error:', audio.error);
+            console.error('Error code:', audio.error ? audio.error.code : 'unknown');
+            
+            // Cek file path
+            console.log('Audio src:', audio.currentSrc);
+            console.log('Network state:', audio.networkState);
+            console.log('Ready state:', audio.readyState);
+        });
+        
+        // Tambahkan event untuk user interaction
+        const startMusicOnInteraction = () => {
+            console.log('🎯 User interaction detected, starting music...');
+            
+            audio.play().then(() => {
+                console.log('✅ Music started after user interaction');
+                
+                // Hapus event listeners setelah berhasil
+                document.removeEventListener('click', startMusicOnInteraction);
+                document.removeEventListener('touchstart', startMusicOnInteraction);
+                document.removeEventListener('keydown', startMusicOnInteraction);
+            }).catch(e => {
+                console.log('❌ Still cannot play after interaction:', e.name);
+            });
+        };
+        
+        // Listen for any user interaction
+        document.addEventListener('click', startMusicOnInteraction, { once: true });
+        document.addEventListener('touchstart', startMusicOnInteraction, { once: true });
+        document.addEventListener('keydown', startMusicOnInteraction, { once: true });
+        
+        // Handle page visibility
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                audio.pause();
+            } else if (!audio.paused) {
+                audio.play().catch(e => console.log('Cannot resume:', e));
+            }
+        });
+    }
+
+    // Start music initialization
+    initBackgroundMusic();
+
+    // ==================== TAB SWITCHING FUNCTIONALITY ====================
+    // ... (kode tab switching yang sama) ...
+
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
@@ -8,20 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
             
-            // Remove active class from all buttons
             tabButtons.forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Add active class to clicked button
             this.classList.add('active');
             
-            // Hide all tab contents
             tabContents.forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Show selected tab content
             const activeTab = document.getElementById(`${tabId}-tab`);
             if (activeTab) {
                 activeTab.classList.add('active');
@@ -29,13 +126,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize first tab as active
     const firstTabBtn = document.querySelector('.tab-btn[data-tab="about"]');
     if (firstTabBtn) {
         firstTabBtn.classList.add('active');
     }
 
-    // Pricing Data
+    // ==================== PRICING DATA ====================
+    // ... (kode pricing data yang sama) ...
     const pricingData = {
         basic: {
             title: "SC BOT TELE JASHARE",
@@ -101,7 +198,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Data untuk Jasa Layanan
+    // ==================== SERVICES DATA ====================
+    // ... (kode services data yang sama) ...
+
     const servicesData = {
         "jasa-wa": {
             title: "Jasa Membuat SC Bot WhatsApp",
@@ -192,12 +291,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Modal Functionality untuk Produk
+    // ==================== MODAL FUNCTIONALITY ====================
+    // ... (kode modal functionality yang sama) ...
+
     const modal = document.getElementById('detailModal');
     const closeModalBtns = document.querySelectorAll('.close-modal, .close-modal-btn');
     const detailButtons = document.querySelectorAll('.btn-detail');
     
-    // Open Modal
     detailButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -206,7 +306,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close Modal
     closeModalBtns.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -214,14 +313,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close on outside click
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
         }
     });
     
-    // Close on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             closeModal();
@@ -232,13 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = pricingData[plan];
         if (!data || !modal) return;
         
-        // Set modal content
         document.getElementById('modalTitle').textContent = data.title;
         document.getElementById('modalIcon').src = data.image;
         document.getElementById('modalIcon').alt = data.title;
         document.getElementById('modalDescription').textContent = data.description;
         
-        // Set features
         const featuresList = document.getElementById('modalFeatures');
         featuresList.innerHTML = '';
         data.features.forEach(feature => {
@@ -247,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function() {
             featuresList.appendChild(li);
         });
         
-        // Show modal
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
@@ -258,12 +352,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
 
-    // Modal Functionality untuk Jasa
     const serviceModal = document.getElementById('serviceModal');
     const closeServiceModalBtns = document.querySelectorAll('.close-service-modal, .close-service-modal-btn');
     const serviceDetailButtons = document.querySelectorAll('.btn-service-detail');
     
-    // Open Service Modal
     serviceDetailButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -272,7 +364,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close Service Modal
     closeServiceModalBtns.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -280,14 +371,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close on outside click
     window.addEventListener('click', function(e) {
         if (e.target === serviceModal) {
             closeServiceModal();
         }
     });
     
-    // Close on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && serviceModal.style.display === 'block') {
             closeServiceModal();
@@ -298,12 +387,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = servicesData[service];
         if (!data || !serviceModal) return;
         
-        // Set modal content
         document.getElementById('serviceModalTitle').textContent = data.title;
         document.getElementById('serviceModalIcon').className = data.icon;
         document.getElementById('serviceModalDescription').textContent = data.description;
         
-        // Set features
         const featuresList = document.getElementById('serviceModalFeatures');
         featuresList.innerHTML = '';
         data.features.forEach(feature => {
@@ -312,7 +399,6 @@ document.addEventListener('DOMContentLoaded', function() {
             featuresList.appendChild(li);
         });
         
-        // Set process
         const processList = document.getElementById('serviceModalProcess');
         processList.innerHTML = '';
         data.process.forEach(step => {
@@ -321,7 +407,6 @@ document.addEventListener('DOMContentLoaded', function() {
             processList.appendChild(li);
         });
         
-        // Show modal
         serviceModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
@@ -333,15 +418,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==================== TELEGRAM REQUEST SYSTEM ====================
-    
-    // Telegram Request Form Handler
+    // ... (kode telegram system yang sama) ...
+
     const telegramForm = document.getElementById('telegramRequestForm');
     
     if (telegramForm) {
         telegramForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
             const formData = {
                 name: document.getElementById('tg-name').value.trim(),
                 username: document.getElementById('tg-username').value.trim(),
@@ -352,17 +436,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 source: 'Website Vinss Botz'
             };
             
-            // Validate form
             if (!validateTelegramForm(formData)) {
                 return;
             }
             
-            // Send to Telegram
             sendToTelegram(formData);
         });
     }
     
-    // Validate Telegram Form
     function validateTelegramForm(data) {
         const errors = [];
         
@@ -387,15 +468,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
     
-    // Show Telegram Message
     function showTelegramMessage(message, type) {
-        // Remove existing message
         const existingMsg = document.querySelector('.telegram-message');
         if (existingMsg) {
             existingMsg.remove();
         }
         
-        // Create message
         const messageDiv = document.createElement('div');
         messageDiv.className = `telegram-message ${type}`;
         messageDiv.innerHTML = `
@@ -403,10 +481,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <div>${message}</div>
         `;
         
-        // Insert before form
         telegramForm.parentNode.insertBefore(messageDiv, telegramForm);
         
-        // Auto remove after some time
         const removeTime = type === 'error' ? 5000 : 8000;
         setTimeout(() => {
             if (messageDiv.parentNode) {
@@ -415,13 +491,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, removeTime);
     }
     
-    // Send to Telegram
     function sendToTelegram(data) {
-        // === KONFIGURASI TELEGRAM ===
-        // Ganti dengan username Telegram Anda (tanpa @)
-        const TELEGRAM_USERNAME = 'VinssBoyz'; // Ganti dengan username Telegram Anda
+        const TELEGRAM_USERNAME = 'VinssBoyz';
         
-        // Format message untuk Telegram
         const message = `
 📋 *NEW REQUEST - VINSS BOTZ WEBSITE*
 
@@ -436,40 +508,30 @@ ${data.details}
 🔗 *Dari Website:* ${data.source}
         `;
         
-        // Encode message untuk URL
         const encodedMessage = encodeURIComponent(message);
-        
-        // URL untuk membuka Telegram dengan pesan yang sudah diisi
         const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodedMessage}`;
         
-        // Show loading
         const submitBtn = document.getElementById('tg-submit-btn');
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
         
-        // Simpan ke local storage (untuk tracking)
         saveRequestToStorage(data);
         
-        // Tampilkan pesan sukses
         setTimeout(() => {
             showTelegramMessage('Request berhasil dibuat! Membuka Telegram...', 'success');
             
-            // Reset form
             telegramForm.reset();
             
-            // Open Telegram after a short delay
             setTimeout(() => {
                 window.open(telegramUrl, '_blank');
             }, 1500);
             
-            // Reset button
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
         }, 1000);
     }
     
-    // Helper function untuk jenis request
     function getRequestTypeText(type) {
         const types = {
             'script-wa': 'Script Bot WhatsApp',
@@ -484,7 +546,6 @@ ${data.details}
         return types[type] || type;
     }
     
-    // Save request to localStorage (optional)
     function saveRequestToStorage(data) {
         try {
             const requests = JSON.parse(localStorage.getItem('vinss_requests') || '[]');
@@ -495,36 +556,30 @@ ${data.details}
                 read: false
             });
             localStorage.setItem('vinss_requests', JSON.stringify(requests));
-            console.log('Request saved to localStorage:', data);
         } catch (error) {
             console.error('Error saving request:', error);
         }
     }
     
-    // Auto format Telegram username
     const usernameInput = document.getElementById('tg-username');
     if (usernameInput) {
         usernameInput.addEventListener('input', function(e) {
             let value = e.target.value;
             
-            // Remove @ if user types it
             if (value.startsWith('@')) {
                 value = value.substring(1);
             }
             
-            // Remove spaces and special characters (only allow letters, numbers, underscore)
             value = value.replace(/[^a-zA-Z0-9_]/g, '');
             
             e.target.value = value.toLowerCase();
         });
     }
     
-    // Handle image errors
     const profileImg = document.querySelector('.profile-img');
     
     if (profileImg) {
         profileImg.addEventListener('error', function() {
-            console.log('Profile image failed to load');
             this.style.opacity = '0';
         });
         
@@ -533,7 +588,7 @@ ${data.details}
         });
     }
 
-    // Back to Top Button
+    // ==================== BACK TO TOP BUTTON ====================
     const backToTopBtn = document.getElementById('backToTop');
     
     if (backToTopBtn) {
@@ -553,7 +608,6 @@ ${data.details}
         });
     }
 
-    // Smooth scroll untuk internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -570,7 +624,6 @@ ${data.details}
         });
     });
 
-    // Fix for iOS Safari 100vh issue
     function fixVH() {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -580,14 +633,12 @@ ${data.details}
     window.addEventListener('orientationchange', fixVH);
     fixVH();
 
-    // Handle orientation change
     window.addEventListener('orientationchange', function() {
         setTimeout(() => {
             window.scrollTo(0, 0);
         }, 100);
     });
 
-    // Add loading class
     document.body.classList.add('loading');
     window.addEventListener('load', function() {
         setTimeout(() => {
