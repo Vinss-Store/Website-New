@@ -8,6 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+  
+  <!-- Background Music Autoplay -->
+<audio id="backgroundMusic" autoplay loop>
+    <source src="./image/background.mp3" type="audio/mpeg">
+    <source src="./image/background.ogg" type="audio/ogg">
+</audio>
     <!-- TikTok Style Profile Header -->
     <div class="profile-header">
         <div class="profile-background"></div>
@@ -593,5 +599,37 @@
     </div>
 
     <script src="./js/index.js"></script>
+    <script>
+// Backup audio autoplay script
+(function() {
+    window.addEventListener('load', function() {
+        const audio = document.getElementById('backgroundMusic');
+        if (!audio) return;
+        
+        // Set volume
+        audio.volume = 0.3;
+        
+        // Try to play with multiple attempts
+        const tryPlay = () => {
+            audio.play().then(() => {
+                console.log('🎵 Music playing (backup script)');
+            }).catch(e => {
+                console.log('⏳ Waiting for interaction...');
+                
+                // Start on any click
+                document.addEventListener('click', function startOnClick() {
+                    audio.play().then(() => {
+                        console.log('🎵 Music started after click');
+                    });
+                    document.removeEventListener('click', startOnClick);
+                }, { once: true });
+            });
+        };
+        
+        // Try after 500ms
+        setTimeout(tryPlay, 500);
+    });
+})();
+</script>
 </body>
 </html>
