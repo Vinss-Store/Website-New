@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinss Botz - Official</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  
+  <!-- Background Music Autoplay -->
+<audio id="backgroundMusic" autoplay loop>
+    <source src="./image/background.mp3" type="audio/mpeg">
+    <source src="./image/background.ogg" type="audio/ogg">
+</audio>
+    <!-- TikTok Style Profile Header -->
+    <div class="profile-header">
+        <div class="profile-background"></div>
+        
+        <!-- Profile Info Container -->
+        <div class="profile-container">
+            
+            <!-- Profile Image and Basic Info -->
+            <div class="profile-top">
+                <div class="profile-image-container">
+                    <div class="profile-img-wrapper">
+                        <img src="./image/profile.png" alt="Vinss Botz" class="profile-img">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Info -->
+            <div class="profile-info">
+                <!-- Nama dan Username di atas -->
+                <h1 class="profile-name">Vinss Students 🎗</h1>
+                <div class="profile-username">@VinssBoyz</div>
+            </div>
+            
+            <!-- Bio Container dengan background hitam -->
+            <div class="bio-container">
+                <!-- Bio/Description -->
+                <div class="profile-bio">
+                    MENYEDIAKAN BERBAGAI PENJUALAN
+                </div>
+                
+                <!-- Stats Row -->
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Mengikuti</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10,5 RB</span>
+                        <span class="stat-label">Pengikut</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">210,1 RB</span>
+                        <span class="stat-label">Suka</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="profile-tabs">
+                <nav class="tab-nav">
+                    <button class="tab-btn active" data-tab="about">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </button>
+                    <button class="tab-btn" data-tab="produk">
+                        <i class="fas fa-box"></i>
+                        <span>Produk</span>
+                    </button>
+                    <button class="tab-btn" data-tab="jasa">
+                        <i class="fas fa-tools"></i>
+                        <span>Jasa</span>
+                    </button>
+                    <button class="tab-btn" data-tab="galery">
+                        <i class="fas fa-images"></i>
+                        <span>Galery</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Content Sections -->
+    <main class="main-content">
+        <!-- About Tab -->
+        <section id="about-tab" class="tab-content active">
+            <div class="tab-container">
+                <!-- Hero Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Vinss Botz</h2>
+                        <p>VinssBotz ADALAH SOLUSI TERBAIK KEBUTUHAN BOT WHATSAPP & TELEGRAM</p>
+                    </div>
+                    
+                    <div class="hero-badge">
+                        <span class="badge-icon">🤖</span>
+                        Script WhatsApp Bot Paling Canggih
+                    </div>
+                    
+                    <div class="hero-description">
+                        <p>Kembangkan Script Bot Anda Agar Menjadi Lebih Menarik Dengan Fitur- Fitur Yang Menyenangkan.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">+500</div>
+                                <div class="stat-label">Pengguna Aktif</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">99%</div>
+                                <div class="stat-label">Uptime Server</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why Choose Us -->
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Custom Development</h4>
+                                <p>Bot WhatsApp dikembangkan sesuai kebutuhan spesifik bisnis Anda</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Terpercaya & Aman</h4>
+                                <p>Data dan informasi bisnis Anda terlindungi dengan sistem keamanan terbaik</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies -->
+                    <div class="tech-section">
+                        <h4>Teknologi yang Kami Gunakan</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-tag"><i class="fas fa-database"></i> MongoDB</span>
+                            <span class="tech-tag"><i class="fab fa-whatsapp"></i> WhatsApp API</span>
+                            <span class="tech-tag"><i class="fab fa-telegram"></i> Telegram</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produk Tab -->
+        <section id="produk-tab" class="tab-content">
+            <div class="tab-container">
+                <div class="section-header">
+                    <h2>Produk</h2>
+                    <p>Pilih script bot yang sesuai kebutuhan Anda</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid">
+                    <!-- Product Cards from existing pricing section -->
+                    <!-- Paket Basic -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/jashare.png" alt="Bot Report Telegram">
+                        </div>
+                        <div class="product-info">
+                            <h3>Bot Report Telegram</h3>
+                            <div class="product-price">Rp 35.000</div>
+                            <p class="product-desc">Bot Telegram untuk melaporkan channel & akun dengan berbagai kategori secara massal</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Report Channel & Profile Photo</li>
+                                <li><i class="fas fa-check"></i> Mass Report Multi-Session</li>
+                                <li><i class="fas fa-check"></i> Session Persistence (login sekali)</li>
+                            </ul>
+                            <button class="btn btn-outline btn-detail" data-plan="basic">
+                                <i class="fas fa-eye"></i>
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Paket Pro -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/createmt.png" alt="Sc Bot Tele Create MT">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sc Bot Tele Create MT</h3>
+                            <div class="product-price">Rp 50.000</div>
+                            <p class="product-desc">Script Bot Telegram Create Methode Banned Whatsapp</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Create Methode Fakchat</li>
+                                <li><i class="fas fa-check"></i> Create Methode Api</li>
+                                <li><i class="fas fa-check"></i> Create Methode Berbagai Thema</li>
+                            </ul>
+                            <button class="btn btn-primary btn-detail" data-plan="pro">
+                                <i class="fas fa-eye"></i>
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Paket Enterprise -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/jashare.png" alt="Script Bot Jashare V2">
+                        </div>
+                        <div class="product-info">
+                            <h3>Script Bot Jashare V2</h3>
+                            <div class="product-price">Rp 15.000</div>
+                            <p class="product-desc">Script Bot Jashare V2 Untuk Membantu Share Penjualan Kalian Secara Otomatis</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Auto Share Otomatis</li>
+                                <li><i class="fas fa-check"></i> Pesan Terjadwal</li>
+                                <li><i class="fas fa-check"></i> Share Menggunakan Gambar</li>
+                            </ul>
+                            <button class="btn btn-outline btn-detail" data-plan="enterprise">
+                                <i class="fas fa-eye"></i>
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Produk Baru 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/gacha.png" alt="Sc Bot Telegram Gacha">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sc Bot Telegram Gacha</h3>
+                            <div class="product-price">Rp 5.000</div>
+                            <p class="product-desc">Bot Telegram Gacha dengan Item Random</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Gacha Item Random</li>
+                                <li><i class="fas fa-check"></i> Gacha File Bug</li>
+                                <li><i class="fas fa-check"></i> Gacha Script All Bot</li>
+                            </ul>
+                            <button class="btn btn-outline btn-detail" data-plan="infochannel">
+                                <i class="fas fa-eye"></i>
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Produk Baru 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/telemd.png" alt="Sc Bot Tele MD">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sc Bot Tele MD</h3>
+                            <div class="product-price">Rp 20.000</div>
+                            <p class="product-desc">Bot Telegram Multi Device Admin Group</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Anti Promosi</li>
+                                <li><i class="fas fa-check"></i> Anti Link</li>
+                                <li><i class="fas fa-check"></i> Game Menu</li>
+                            </ul>
+                            <button class="btn btn-outline btn-detail" data-plan="admingroup">
+                                <i class="fas fa-eye"></i>
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jasa Tab -->
+        <section id="jasa-tab" class="tab-content">
+            <div class="tab-container">
+                <div class="section-header">
+                    <h2>Jasa Layanan</h2>
+                    <p>Layanan custom professional sesuai kebutuhan bisnis Anda</p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="services-grid">
+                    <!-- Jasa 1 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>Jasa Membuat SC Bot WhatsApp</h3>
+                        <div class="service-price">Mulai Rp 50.000</div>
+                        <p class="service-desc">Custom Bot WhatsApp dengan fitur sesuai kebutuhan</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Base Sendiri</li>
+                            <li><i class="fas fa-check"></i> Bisa Di Jual Kembali</li>
+                            <li><i class="fas fa-check"></i> Integrasi Api</li>
+                        </ul>
+                        <button class="btn btn-outline btn-service-detail" data-service="jasa-wa">
+                            <i class="fas fa-info-circle"></i>
+                            Detail Layanan
+                        </button>
+                    </div>
+
+                    <!-- Jasa 2 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3>Jasa Membuat SC Bot Telegram</h3>
+                        <div class="service-price">Mulai Rp 50.000</div>
+                        <p class="service-desc">Custom Bot Telegram Multi Fungsi</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Bisa Req Fitur</li>
+                            <li><i class="fas fa-check"></i> Menu Button</li>
+                            <li><i class="fas fa-check"></i> Bisa Menjual Script</li>
+                        </ul>
+                        <button class="btn btn-outline btn-service-detail" data-service="jasa-tele">
+                            <i class="fas fa-info-circle"></i>
+                            Detail Layanan
+                        </button>
+                    </div>
+
+                    <!-- Jasa 3 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Jasa Pembuatan Website</h3>
+                        <div class="service-price">Mulai Rp 100.000</div>
+                        <p class="service-desc">Website Responsif sesuai kebutuhan</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Responsif Mobile</li>
+                            <li><i class="fas fa-check"></i> Fitur Sesuai Request</li>
+                            <li><i class="fas fa-check"></i> Cara Deploy Vercel</li>
+                        </ul>
+                        <button class="btn btn-outline btn-service-detail" data-service="jasa-website">
+                            <i class="fas fa-info-circle"></i>
+                            Detail Layanan
+                        </button>
+                    </div>
+
+                    <!-- Jasa Band -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h3>Jasa Band All Account</h3>
+                        <div class="service-price">Mulai Rp 20.000</div>
+                        <p class="service-desc">Jasa Band akun & channel berbagai platform terpercaya dan cepat</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Band WhatsApp</li>
+                            <li><i class="fas fa-check"></i> Band Telegram</li>
+                            <li><i class="fas fa-check"></i> Band YouTube</li>
+                        </ul>
+                        <button class="btn btn-outline btn-service-detail" data-service="jasa-band">
+                            <i class="fas fa-info-circle"></i>
+                            Detail Layanan
+                        </button>
+                    </div>
+
+                    <!-- Jasa 4 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-unlock-alt"></i>
+                        </div>
+                        <h3>Jasa Unband WhatsApp</h3>
+                        <div class="service-price">Rp 25.000</div>
+                        <p class="service-desc">Jasa Unband WhatsApp Terpercaya</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Unband Spam</li>
+                            <li><i class="fas fa-check"></i> Unband Perma Hard</li>
+                            <li><i class="fas fa-check"></i> Jaminan Kebuka</li>
+                        </ul>
+                        <button class="btn btn-outline btn-service-detail" data-service="jasa-unband">
+                            <i class="fas fa-info-circle"></i>
+                            Detail Layanan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galery Tab -->
+        <section id="galery-tab" class="tab-content">
+            <div class="tab-container">
+                <div class="section-header">
+                    <h2>Galery</h2>
+                    <p>Tampilan produk dan hasil karya kami</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band1.png" alt="Galery 1">
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band2.png" alt="Galery 2">
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band3.png" alt="Galery 3">
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band4.png" alt="Galery 4">
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band5.png" alt="Galery 5">
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./image/galery/band6.png" alt="Galery 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./image/profile.png" alt="Vinss Botz" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">
+                <span>Vinss Botz</span>
+            </div>
+            <p>&copy; 2024 Vinss Botz. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://t.me/VinssBoyz" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Modal Detail -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detail Paket</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalIcon" src="" alt="" class="modal-plan-image">
+                </div>
+                <div id="modalDescription" class="modal-description">
+                    <!-- Konten akan diisi oleh JavaScript -->
+                </div>
+                <div class="modal-features">
+                    <h4>Fitur Utama:</h4>
+                    <ul id="modalFeatures">
+                        <!-- Fitur akan diisi oleh JavaScript -->
+                    </ul>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://t.me/VinssBoyz" class="btn btn-telegram" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Order via Telegram
+                    </a>
+                    <button class="btn btn-secondary close-modal-btn">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail Jasa -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="serviceModalTitle">Detail Layanan</h3>
+                <span class="close-service-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon">
+                    <i id="serviceModalIcon" class="fab fa-whatsapp"></i>
+                </div>
+                <div id="serviceModalDescription" class="modal-description">
+                    <!-- Konten akan diisi oleh JavaScript -->
+                </div>
+                <div class="modal-features">
+                    <h4>Benefit Layanan:</h4>
+                    <ul id="serviceModalFeatures">
+                        <!-- Fitur akan diisi oleh JavaScript -->
+                    </ul>
+                </div>
+                <div class="modal-process">
+                    <h4>Proses Pengerjaan:</h4>
+                    <ul id="serviceModalProcess">
+                        <!-- Proses akan diisi oleh JavaScript -->
+                    </ul>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://t.me/VinssBoyz" class="btn btn-telegram" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Konsultasi via Telegram
+                    </a>
+                    <button class="btn btn-secondary close-service-modal-btn">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script>
+// Backup audio autoplay script
+(function() {
+    window.addEventListener('load', function() {
+        const audio = document.getElementById('backgroundMusic');
+        if (!audio) return;
+        
+        // Set volume
+        audio.volume = 0.3;
+        
+        // Try to play with multiple attempts
+        const tryPlay = () => {
+            audio.play().then(() => {
+                console.log('🎵 Music playing (backup script)');
+            }).catch(e => {
+                console.log('⏳ Waiting for interaction...');
+                
+                // Start on any click
+                document.addEventListener('click', function startOnClick() {
+                    audio.play().then(() => {
+                        console.log('🎵 Music started after click');
+                    });
+                    document.removeEventListener('click', startOnClick);
+                }, { once: true });
+            });
+        };
+        
+        // Try after 500ms
+        setTimeout(tryPlay, 500);
+    });
+})();
+</script>
+</body>
+</html>
