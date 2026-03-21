@@ -99,6 +99,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start music initialization
     initBackgroundMusic();
 
+    // Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.feature-card, .product-card, .service-card, .stat-card, .section-card');
+
+const revealOnScroll = () => {
+    revealElements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// Tambahkan kelas "reveal" pada elemen yang ingin dianimasi saat scroll
+revealElements.forEach(el => el.classList.add('reveal'));
+
+// Smooth scroll untuk anchor links (jika ada)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Efek loading pada tombol (opsional)
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        if (!this.classList.contains('btn-telegram') && !this.hasAttribute('data-no-load')) {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="modal-loading"></span> Memproses...';
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 1500);
+        }
+    });
+});
+
     // ==================== TAB SWITCHING FUNCTIONALITY ====================
     // ... (kode tab switching yang sama) ...
 
