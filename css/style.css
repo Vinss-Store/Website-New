@@ -1986,3 +1986,179 @@ body {
         transform: rotate(360deg);
     }
 }
+
+/* ========== ANIMASI TAMBAHAN ========== */
+
+/* Efek muncul saat scroll (reveal) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation untuk grid items */
+.feature-card, .product-card, .service-card, .stat-card {
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.1s; }
+.stat-card:nth-child(3) { animation-delay: 0.15s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efek hover lebih ciamik */
+.feature-card:hover,
+.product-card:hover,
+.service-card:hover,
+.stat-card:hover {
+    animation: none;
+    transform: translateY(-12px) scale(1.02);
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.4s;
+}
+
+/* Glow effect pada tombol */
+.btn-primary {
+    animation: glowPulse 3s infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+    }
+}
+
+/* Efek gradien berjalan pada header */
+.profile-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(37, 211, 102, 0.05) 0%, transparent 70%);
+    animation: rotateGradient 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes rotateGradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Efek shimmer pada badge */
+.hero-badge {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Efek hover pada link footer */
+.footer-links a {
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: translateY(-5px) rotate(360deg);
+    background: rgba(37, 211, 102, 0.2);
+}
+
+/* Efek loading pada modal (opsional) */
+.modal-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+}
+
+/* Animasi scroll halus (dari JS sudah ada, tapi ini fallback) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efek ketik (typewriter) pada hero */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid var(--primary);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary); }
+}
+
+/* Tambahan untuk mobile: animasi saat menu tab aktif */
+.tab-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--telegram-blue));
+    animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
